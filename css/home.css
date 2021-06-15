@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0 auto;
+  max-width: 960px;
+  font-family: "Original Surfer", cursive;
+}
+#wrapper {
+  margin-top: 2%;
+  background-color: white;
+
+  padding-bottom: 2%;
+}
+header {
+  display: flex;
+}
+header a {
+  text-decoration: none;
+  margin: auto 0;
+  margin-left: auto;
+  margin-right: 2%;
+  color: #3a3a3a;
+}
+nav {
+  background-color: #3a3a3a;
+}
+nav ul {
+  display: flex;
+  padding-left: 0;
+}
+nav ul li {
+  list-style: none;
+}
+nav ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 0.7em;
+  padding: 0.5em;
+}
+nav ul li a:hover {
+  background-color: #4c96d7;
+  color: #3a3a3a;
+}
+main h1 {
+  margin-left: 1%;
+}
+main #DMC {
+  color: #4c96d7;
+  margin-left: 4%;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 4%;
+}
+#DMC h2 {
+  margin: 0;
+}
+#DMC p {
+  margin: 0;
+  color: #2e74b3;
+}
+main #own {
+  margin-left: 4%;
+  position: relative;
+  z-index: 1;
+  width: 190px;
+  left: 22%;
+  top: 11em;
+}
+#delorean {
+  position: relative;
+  top: -100px;
+  width: 100%;
+}
+#twosides {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+#bottom {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 4%;
+  grid-column-gap: 2%;
+  margin-right: 4%;
+  margin-bottom: 10%;
+}
+#bottom div {
+  width: 100%;
+  height: 100%;
+  background-color: #4c96d7;
+  border: 1px solid black;
+}
+#bottom h2 {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
+#bottom #flux {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+#bottom #flux-p {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  justify-self: center;
+  margin-bottom: 10%;
+}
+#bottom #flame {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+#bottom #flame-p {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  justify-self: center;
+}
+#bottom #bumper {
+  grid-column: 1/2;
+  grid-row: 4/5;
+}
+#bottom #bumper-p {
+  grid-column: 1/2;
+  grid-row: 5/6;
+  justify-self: center;
+}
+#bottom #hub {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+#bottom #hub-p {
+  grid-column: 2/3;
+  grid-row: 5/6;
+  justify-self: center;
+}
+#bottom img {
+  margin: auto;
+  display: block;
+}
+#top {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+#top ul li {
+  line-height: 2em;
+}
+hr {
+  border-top: 4px solid #3a3a3a;
+}
+footer {
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+/*error page*/
+#errorTitle,
+#errorMessage {
+  margin-left: 2%;
+}
+/*signin and signup page*/
+label {
+  display: block;
+}
+input {
+  display: block;
+  margin-bottom: 1%;
+  padding: 0.5em;
+  border-radius: 4px;
+}
+#passDes {
+  margin-left: 2%;
+  margin-bottom: 0;
+  color: rgb(207, 3, 3);
+  font-size: 0.9em;
+}
+.btm {
+  margin-bottom: 2%;
+  font-size: 1em;
+  border-radius: 0;
+  background-color: #3a3a3a;
+  color: white;
+}
+#memLink {
+  font-size: 1.2em;
+}
+#memLink:hover {
+  color: #d4ab06;
+}
+label,
+input,
+.btm,
+#memLink,
+textarea,
+select {
+  margin-left: 2%;
+}
+select:invalid,
+input:invalid,
+textarea:invalid {
+  border: 2px solid red;
+}
+#invImage,
+#invThumbnail {
+  width: 320px;
+}
+textarea,
+select {
+  margin-bottom: 1%;
+  padding: 0.5em;
+  border-radius: 4px;
+}
+.success {
+  margin-left: 2%;
+  margin-right: 2%;
+  font-weight: bold;
+  width: fit-content;
+  animation: glow 1s infinite alternate;
+}
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px #aef4af;
+  }
+  to {
+    box-shadow: 0 0 10px 10px #aef4af;
+  }
+}
+.note {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+/*account -> index.php*/
+.warningMessage {
+  margin-left: 2%;
+  margin-right: 2%;
+  color: rgb(207, 3, 3);
+}
+#cookie {
+  margin: auto;
+}
+.general {
+  margin-left: 2%;
+}
+main {
+  padding-left: 2%;
+}
+@media screen and (min-width: 430px) {
+  main #own {
+    left: 30%;
+    top: 15em;
+  }
+  nav ul li a {
+    font-size: 0.9em;
+  }
+}
+@media screen and (min-width: 640px) {
+  body {
+    background-image: url("/phpmotors/images/site/small_check.jpg");
+  }
+  #wrapper {
+    border: 6px solid #4c96d7;
+    border-radius: 9px;
+  }
+  nav ul li a {
+    font-size: 1.1em;
+    padding: 0.7em;
+  }
+  main #own {
+    left: 0;
+    top: 0;
+  }
+  #twosides {
+    grid-template-columns: 1fr 1fr;
+  }
+  #top {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  #bottom {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+}

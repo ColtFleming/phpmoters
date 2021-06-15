@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  background-image: url("/phpmotors/images/site/small_check.jpg");
+  margin: 0 auto;
+  max-width: 960px;
+  font-family: "Original Surfer", cursive;
+}
+#wrapper {
+  margin-top: 2%;
+  background-color: white;
+  border: 6px solid #4c96d7;
+  border-radius: 9px;
+  padding-bottom: 2%;
+}
+header {
+  display: flex;
+}
+header a {
+  text-decoration: none;
+  margin: auto 0;
+  margin-left: auto;
+  margin-right: 2%;
+  color: #3a3a3a;
+}
+nav {
+  background-color: #3a3a3a;
+}
+nav ul {
+  display: flex;
+  padding-left: 0;
+}
+nav ul li {
+  list-style: none;
+}
+nav ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 0.5em;
+}
+nav ul li a:hover {
+  background-color: #4c96d7;
+  color: #3a3a3a;
+}
+hr {
+  border-top: 4px solid #3a3a3a;
+}
+footer {
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+@media screen and (min-width: 640px) {
+  nav ul li a {
+    font-size: 1.1em;
+    padding: 0.7em;
+  }
+}
