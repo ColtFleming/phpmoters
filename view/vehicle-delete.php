@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+// If not login as Admin, redirect to home
+if(!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] == 1){
+    header('Location: /phpmotors/');
+    exit;
+}
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

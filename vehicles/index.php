@@ -4,14 +4,6 @@
 // Create or access a Session
 session_start();
 
-// If not login as Admin, redirect to home
-if(!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] == 1){
-    header('Location: /phpmotors/');
-    exit;
-}
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-}
 
 // Get the database connection file
 require_once '../library/connections.php';
@@ -186,6 +178,26 @@ switch($action){
             header('location: /phpmotors/vehicles/');
             exit;
         }
+    break;
+    case 'classification':
+        $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+        $vehicles = getVehiclesByClassification($classificationName);
+        if(!count($vehicles)){
+        $message = "<p class='warningMessage'>Sorry, no $classificationName could be found.</p>";
+        } else {
+        $vehicleDisplay = buildVehiclesDisplay($vehicles);
+        }
+        include '../view/classification.php';
+    break;
+    case 'inventory':
+        $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
+        $vehicleInfo = getVehicleInfoByinvId($invId);
+        if(count($vehicleInfo) < 1){
+        $message = "<p class='warningMessage'>Sorry, no item could be found.</p>";
+        } else {
+        $vehicleDetail = buildVehicleInfoDisplay($vehicleInfo);
+        }
+        include '../view/vehicle-detail.php';
     break;
     default:
 

@@ -1,4 +1,14 @@
 <?php
+
+// If not login as Admin, redirect to home
+if(!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] == 1){
+    header('Location: /phpmotors/');
+    exit;
+}
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+}
+
 //Build the select list
 $classifList = '<select name="classificationId" id="classificationName" required>';
 $classifList .= "<option value='' selected disabled>Select Car Classification</option>"; 

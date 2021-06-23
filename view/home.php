@@ -26,7 +26,7 @@
             <p>Fuzzy dice</p>
         </div>
         <img src="/phpmotors/images/site/own_today.png" id="own" alt="Own today image button">
-        <img src="/phpmotors/images/delorean.jpg" id="delorean" alt="Delorean image">
+        <img src="/phpmotors/images/vehicles/delorean.jpg" id="delorean" alt="Delorean image">
         <div id="twosides">
             <div id="bottom">
                 <h2>Delorean Upgrades</h2>

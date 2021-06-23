@@ -122,7 +122,89 @@ switch($action){
         session_unset();
         session_destroy();
         header('Location: /phpmotors/');
-        break;
+    break;
+    case 'updateAccView':
+        
+        include '../view/client-update.php';
+        exit;    
+    break;
+    case 'updateInfo':
+        // Filter and store the data
+        $clientFirstname = filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING);
+        $clientLastname = filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING);
+        $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
+        $clientId = $_SESSION['clientData']['clientId'];
+
+        if($clientEmail !== $_SESSION['clientData']['clientEmail']){
+            // check for existing email
+            $existingEmail = checkExistingEmail($clientEmail);
+
+            if($existingEmail){
+                $message = '<p class="warningMessage">The email address already exists.<p>';
+                include '../view/client-update.php';
+                exit;
+            }
+        }
+        // Check for missing data
+        if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) ){
+            $message = '<p class="warningMessage">Please provide information for all empty form fields.</p>';
+            include '../view/client-update.php';
+            exit; 
+        }
+        $updateInfo = updateInfo($clientFirstname, $clientLastname, $clientEmail, $clientId);
+        if ($updateInfo) {
+            $clientData = getClientInfo($clientId);
+            // Remove the password from the array the array_pop function removes the last element from an array
+            array_pop($clientData);
+            // Store the array into the session
+            $_SESSION['clientData'] = $clientData;
+            $message = "<p class='success'>$clientFirstname, Your information has been updated.</p>";
+            $_SESSION['message'] = $message;
+            header('location: /phpmotors/accounts/');
+            exit;
+        } else {
+            $message = "<p class='warningMessage'>Sorry $clientFirstname, we could not update your account information. Please try again.</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+    break;
+    case 'updatePassword':
+        $clientId = $_SESSION['clientData']['clientId'];
+        $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
+
+        // Check for missing data
+        if(empty($clientPassword) ){
+            $message2 = '<p class="warningMessage">Please enter the password followed by the prompt in order to update the password.</p>';
+            include '../view/client-update.php';
+            exit; 
+        }
+        $checkPassword = checkPassword($clientPassword);
+        if($checkPassword == 0){
+            $message2 = '<p class="warningMessage">Please make sure your password matches the desired pattern.</p>';
+            include '../view/client-update.php';
+            exit; 
+        }
+        // Hash the checked password
+        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+
+        $updatePassword = updatePassword($hashedPassword, $clientId);
+        if ($updatePassword) {
+            $clientData = getClientInfo($clientId);
+            // Remove the password from the array the array_pop function removes the last element from an array
+            array_pop($clientData);
+            // Store the array into the session
+            $_SESSION['clientData'] = $clientData;
+            $clientFirstname = $_SESSION['clientData']['clientFirstname'];
+            $message = "<p class='success'>$clientFirstname, Your password has been updated.</p>";
+            $_SESSION['message'] = $message;
+            header('location: /phpmotors/accounts/');
+            exit;
+        } else {
+            $message2 = "<p class='warningMessage'>Sorry $clientFirstname, we could not update your account password. Please try again.</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+    break;
     default:
         include '../view/admin.php';
     break;
